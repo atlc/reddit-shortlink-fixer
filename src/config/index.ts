@@ -21,16 +21,18 @@ const selenium = {
     },
 };
 
-function parseEnvBlock(envObj: { [key: string]: string | undefined }, objectName: string) {
+function parseEnvBlock(envObj: { [key: string]: string | boolean | undefined }, objectName: string) {
     const missingValues = Object.keys(envObj).filter((key) => envObj[key] === undefined);
 
     if (missingValues.length) {
-        console.log(`Crashing app - the following variables are missing for object ${objectName}: ${missingValues.join(", ")}`);
+        console.log(`Crashing app - the following variables for ${objectName} are missing: ${missingValues.join(", ")}`);
         process.exit(1);
     }
 }
 
 parseEnvBlock(reddit, "reddit");
+parseEnvBlock(deployment, "deployment");
+parseEnvBlock(selenium.binaries, "Selenium binaries");
 
 export default {
     deployment,
