@@ -2,6 +2,7 @@ import Snoowrap from "snoowrap";
 import config from "./config";
 import { getFixedURLs } from "./selenium";
 import { extractLink, isNewShareStyle } from "./utils/links";
+import { reddit } from ".";
 
 const SUBREDDIT = config.deployment.isProduction ? config.deployment.subreddit || "bestof" : "testingground4bots";
 const TRIGGER_TEXT =
